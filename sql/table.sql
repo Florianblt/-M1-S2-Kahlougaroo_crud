@@ -1,7 +1,6 @@
 CREATE DATABASE  IF NOT EXISTS kahlougaroo;
 USE kahlougaroo;
 
-
 DROP TABLE IF EXISTS partie;
 CREATE TABLE partie (
     -- PRIMARY KEY --

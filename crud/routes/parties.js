@@ -33,7 +33,6 @@ router.get('/', function (req, res) {
 });
 
 
-
 ////////////////////////////////////////////////////////////////////////////////
 // GET /parties:pin
 ////////////////////////////////////////////////////////////////////////////////
@@ -66,20 +65,6 @@ router.get('/:pin', function (req, res) {
 });
 
 
-
-
-
-
-
-/* SQL PARTIE
-    -- PRIMARY KEY --
-    id int(11) NOT NULL AUTO_INCREMENT PRIMARY KEY,
-    -- OTHER --
-    token VARCHAR(250) NOT NULL UNIQUE,
-    pin int(11) NOT NULL,
-    nb_joueurs int(11) NOT NULL,
-    statut int(11) NOT NULL
-*/
 ////////////////////////////////////////////////////////////////////////////////
 // POST /parties
 ////////////////////////////////////////////////////////////////////////////////
@@ -87,7 +72,7 @@ router.get('/:pin', function (req, res) {
  * POST | Ajout d'une partie en base de donnée
  * Exemple : 
     {
-      "token": "XXL",
+      "token": "56789",
       "pin":2,
       "nb_joueurs":3,
       "statut":2
@@ -101,7 +86,6 @@ router.post('/', function (req, res) {
                     VALUES ( "${req.body.token}", ${req.body.pin}, ${req.body.nb_joueurs}, ${req.body.statut})
                     `, function (err, rows) {
             if (err) {
-                 //throw err;
                  res.setHeader('Access-Control-Allow-Origin', '*');
                  res.writeHead(500, { "Content-Type": "application/json" });
                  var result = {
@@ -117,17 +101,11 @@ router.post('/', function (req, res) {
                     success: true,
                     rows: rows.length,
                 }
-                res.write(JSON.stringify(rows));
+                res.write(JSON.stringify(req.body));
                 res.end();
             }
         });
-        // connection.release();()
     });
 });
-
-
-
-
-
 
 module.exports = router;
