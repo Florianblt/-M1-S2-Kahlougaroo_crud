@@ -1,0 +1,18 @@
+version: '2'
+services: 
+  mysql:
+    image: mysql:5.6
+    environment:
+      - MYSQL_ROOT_PASSWORD=password
+      - MYSQL_DATABASE=kahlougaroo
+    ports:
+      - 32770:3306
+
+  crud:
+    image:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+        - 8080:8080
+    links:
+        - mysql:mysql
