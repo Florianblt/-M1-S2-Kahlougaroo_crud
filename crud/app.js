@@ -3,7 +3,7 @@ var express = require('express');
 var app = express();
 var mysql = require('mysql');
 var bodyParser = require('body-parser');
-var config = require('./config')
+var config = require('./config_prod')
 
 
 var connection  = require('express-myconnection'); 
