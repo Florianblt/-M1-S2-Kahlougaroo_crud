@@ -7,7 +7,7 @@ var config = {
         db: 'kahlougaroo'         // your database name
     },
     server: {
-        host: 'localhost',
+        host: '172.17.0.3',
         port: 8080
     }
 }
