@@ -1,8 +1,7 @@
 FROM node:latest
-RUN /usr/src/app
 WORKDIR /usr/src/app
-COPY package.json ./
+COPY package*.json ./
 RUN npm install
 COPY . .
-EXPOSE 8080
+EXPOSE 5000
 CMD [ "npm", "start" ]
