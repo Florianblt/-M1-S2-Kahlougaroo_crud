@@ -50,7 +50,7 @@ router.post('/', function (req, res) {
     req.getConnection(function (err, connection) {
         var query = connection.query(`
                     INSERT INTO joueur (token, nom, master, mort, role, partie) 
-                    VALUES ( "${req.body.token}", ${req.body.nom}, ${req.body.master}, ${req.body.mort}, ${req.body.role}, ${req.body.partie})
+                    VALUES ( "${req.body.token}", "${req.body.nom}", ${req.body.master}, ${req.body.mort}, ${req.body.role}, ${req.body.partie})
                     `, function (err, rows) {
             if (err) {
                 res.setHeader('Access-Control-Allow-Origin', '*');
