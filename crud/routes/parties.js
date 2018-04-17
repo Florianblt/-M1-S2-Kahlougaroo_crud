@@ -6,7 +6,7 @@ var router = express.Router();
 ////////////////////////////////////////////////////////////////////////////////
 router.get('/', function (req, res) {
     req.getConnection(function (err, connection) {
-        var query = connection.query('SELECT * FROM partie', function (err, rows) {
+        var query = connection.query('SELECT token, pin, nb_joueurs, statut FROM partie', function (err, rows) {
             if (err) {
                 // throw err;
                 res.setHeader('Access-Control-Allow-Origin', '*');
@@ -38,7 +38,7 @@ router.get('/', function (req, res) {
 ////////////////////////////////////////////////////////////////////////////////
 router.get('/:pin', function (req, res) {
     req.getConnection(function (err, connection) {
-        var query = connection.query('SELECT * FROM partie WHERE pin = ' + req.param.pin , function (err, rows) {
+        var query = connection.query('SELECT token, pin, nb_joueurs, statut FROM partie WHERE pin = ' + req.param.pin , function (err, rows) {
             if (err) {
                 // throw err;
                 res.setHeader('Access-Control-Allow-Origin', '*');
@@ -70,12 +70,7 @@ router.get('/:pin', function (req, res) {
 ////////////////////////////////////////////////////////////////////////////////
 router.get('/:token_joueur', function (req, res) {
     req.getConnection(function (err, connection) {
-        var query = connection.query(`
-            SELECT * 
-            FROM partie
-            INNER JOIN joueur 
-            ON partie.token = joueur.token
-            WHERE  joueur.token = ` + req.param.token_joueur , function (err, rows) {
+        var query = connection.query(`SELECT token, pin, nb_joueurs, statut FROM partie INNER JOIN joueur ON partie.pin = joueur.pin WHERE  joueur.token = ` + req.param.token_joueur , function (err, rows) {
             if (err) {
                 res.setHeader('Access-Control-Allow-Origin', '*');
                 res.writeHead(500, { "Content-Type": "application/json" });

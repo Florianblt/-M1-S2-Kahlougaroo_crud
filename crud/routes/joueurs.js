@@ -6,7 +6,7 @@ var router = express.Router();
 ////////////////////////////////////////////////////////////////////////////////
 router.get('/', function (req, res) {
     req.getConnection(function (err, connection) {
-        var query = connection.query('SELECT * FROM joueur', function (err, rows) {
+        var query = connection.query('SELECT token, nom, master, mort, role, pin FROM joueur', function (err, rows) {
             if (err) {
                 res.setHeader('Access-Control-Allow-Origin', '*');
                 res.writeHead(500, { "Content-Type": "application/json" });
@@ -49,8 +49,8 @@ router.get('/', function (req, res) {
 router.post('/', function (req, res) {
     req.getConnection(function (err, connection) {
         var query = connection.query(`
-                    INSERT INTO joueur (token, nom, master, mort, role, partie) 
-                    VALUES ( "${req.body.token}", "${req.body.nom}", ${req.body.master}, ${req.body.mort}, ${req.body.role}, ${req.body.partie})
+                    INSERT INTO joueur (token, nom, master, mort, role, pin) 
+                    VALUES ( "${req.body.token}", "${req.body.nom}", ${req.body.master}, ${req.body.mort}, ${req.body.role}, ${req.body.pin})
                     `, function (err, rows) {
             if (err) {
                 res.setHeader('Access-Control-Allow-Origin', '*');
