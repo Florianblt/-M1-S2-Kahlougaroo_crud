@@ -19,7 +19,7 @@ CREATE TABLE partie (
     nb_joueurs int(11) NOT NULL,
     -- FOREIGN KEY --
     statut int(11) NOT NULL DEFAULT 1,
-    FOREIGN KEY (statut) REFERENCES statut(token)
+    FOREIGN KEY (statut) REFERENCES statut(id)
 );
 
 
@@ -42,7 +42,7 @@ CREATE TABLE joueur (
     mort int(2) NOT NULL DEFAULT 0,
     -- FOREIGN KEY --
     role int(11) NOT NULL,
-    partie int(11) NOT NULL,
+    partie VARCHAR(250) NOT NULL,
     FOREIGN KEY (role) REFERENCES role(id),
     FOREIGN KEY (partie) REFERENCES partie(token)
 );
