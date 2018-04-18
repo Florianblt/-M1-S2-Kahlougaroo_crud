@@ -103,8 +103,8 @@ router.get('/:token_joueur', function (req, res) {
  * POST | Ajout d'une partie en base de donnée
  * Exemple : 
     {
-      "token": "TOKEN-PARTIE-TEST",
-      "pin":0000,
+      "token": "TOKEN-TEST",
+      "pin":0,
       "nb_joueurs":8,
       "statut":1
     }
