@@ -1,8 +1,0 @@
-version: "2"
-services:
-  app:
-    container_name: crud
-    restart: always
-    build: .
-    ports:
-      - "8080:8080"

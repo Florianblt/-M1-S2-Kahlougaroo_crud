@@ -38,19 +38,19 @@ router.get('/', function (req, res) {
  * POST | Ajout d'un joueur
  * Exemple : 
     {
-      "token": "5GHJF6789",
+      "token": "TOKEN-JOUEUR-TEST",
       "nom": "jean",
       "master":1,
-      "mort":2,
+      "mort":0,
       "role": 1,
-      "partie": "567YUIFG6789"
+      "partie": "TOKEN-PARTIE-TEST"
     }
  */
 router.post('/', function (req, res) {
     req.getConnection(function (err, connection) {
         var query = connection.query(`
                             INSERT INTO joueur (token, nom, master, mort, role, partie) 
-                            VALUES ( "${req.body.token}", "${req.body.nom}", ${req.body.master}, ${req.body.mort}, ${req.body.role}, ${req.body.partie})
+                            VALUES ( "${req.body.token}", "${req.body.nom}", ${req.body.master}, ${req.body.mort}, ${req.body.role}, "${req.body.partie}")
                     `, function (err, rows) {
                 if (err) {
                     res.setHeader('Access-Control-Allow-Origin', '*');
