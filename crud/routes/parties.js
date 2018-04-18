@@ -64,7 +64,7 @@ router.get('/:pin', function (req, res) {
 ////////////////////////////////////////////////////////////////////////////////
 // GET /parties:token_joueur
 ////////////////////////////////////////////////////////////////////////////////
-router.get('/:token_joueur', function (req, res) {
+router.get('/byToken/:token_joueur', function (req, res) {
     req.getConnection(function (err, connection) {
                 var query = connection.query('SELECT *  FROM partie INNER JOIN joueur ON partie.token = joueur.partie WHERE  joueur.token = "' +req.params.token_joueur + '"' 
                 , function (err, rows) {            
