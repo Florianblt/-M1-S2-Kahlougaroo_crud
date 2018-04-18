@@ -71,7 +71,7 @@ router.get('/:token_joueur', function (req, res) {
                     FROM partie
                     INNER JOIN joueur 
                     ON partie.token = joueur.partie
-                    WHERE  joueur.token = "` + req.param.token_joueur +'"', function (err, rows) {            
+                    WHERE  joueur.token = "${req.param.token_joueur}"`, function (err, rows) {            
                 if (err) {
                 res.setHeader('Access-Control-Allow-Origin', '*');
                 res.writeHead(500, { "Content-Type": "application/json" });
