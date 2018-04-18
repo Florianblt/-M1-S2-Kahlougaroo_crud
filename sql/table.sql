@@ -4,12 +4,13 @@ USE kahlougaroo;
 DROP TABLE IF EXISTS partie;
 CREATE TABLE partie (
     -- PRIMARY KEY --
-    id int(11) NOT NULL AUTO_INCREMENT PRIMARY KEY,
+    token VARCHAR(250) NOT NULL PRIMARY KEY,
     -- OTHER --
-    token VARCHAR(250) NOT NULL,
-    pin int(11) NOT NULL,
+    pin int(11) NOT NULL UNIQUE,
     nb_joueurs int(11) NOT NULL,
-    statut int(11) NOT NULL
+    -- FOREIGN KEY --
+    statut int(11) NOT NULL DEFAULT 1,
+    FOREIGN KEY (statut) REFERENCES statut(token)
 );
 
 
@@ -25,17 +26,16 @@ CREATE TABLE role (
 DROP TABLE IF EXISTS joueur;
 CREATE TABLE joueur (
     -- PRIMARY KEY --
-    id int(11) NOT NULL AUTO_INCREMENT PRIMARY KEY,
+    token VARCHAR(250) NOT NULL PRIMARY KEY,
     -- OTHER --
-    token VARCHAR(250) NOT NULL,
     nom VARCHAR(250) NOT NULL,
-    master int(2) NOT NULL,
-    mort int(2) NOT NULL,
+    master int(2) NOT NULL DEFAULT 0,
+    mort int(2) NOT NULL DEFAULT 0,
     -- FOREIGN KEY --
     role int(11) NOT NULL,
-    pin int(11) NOT NULL,
+    partie int(11) NOT NULL,
     FOREIGN KEY (role) REFERENCES role(id),
-    FOREIGN KEY (pin) REFERENCES partie(pin)
+    FOREIGN KEY (partie) REFERENCES partie(token)
 );
 
 
