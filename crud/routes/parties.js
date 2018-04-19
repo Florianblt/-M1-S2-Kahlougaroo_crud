@@ -66,7 +66,7 @@ router.get('/:pin', function (req, res) {
 ////////////////////////////////////////////////////////////////////////////////
 router.get('/byToken/:token_joueur', function (req, res) {
     req.getConnection(function (err, connection) {
-                var query = connection.query('SELECT p.pin, p.nb_joueurs, p.token, p.statut  FROM partie p INNER JOIN joueur j ON p.token = j.partie WHERE j.token =' +req.params.token_joueur + '"' 
+                var query = connection.query('SELECT p.pin, p.nb_joueurs, p.token, p.statut  FROM partie p INNER JOIN joueur j ON p.token = j.partie WHERE j.token = "' + req.params.token_joueur + '"' 
                 , function (err, rows) {            
                 if (err) {
                 res.setHeader('Access-Control-Allow-Origin', '*');
