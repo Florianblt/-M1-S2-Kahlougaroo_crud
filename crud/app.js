@@ -26,6 +26,9 @@ app.use(bodyParser.urlencoded({     // to support URL-encoded bodies
 var index = require('./routes/index');
 app.use('/', index);
 
+var outils = require('./routes/outils');
+app.use('/outils', outils);
+
 var joueurs = require('./routes/joueurs');
 app.use('/joueurs', joueurs);
 
