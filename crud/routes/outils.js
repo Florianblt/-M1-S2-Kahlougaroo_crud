@@ -38,7 +38,7 @@ router.post('/delete/parties', function (req, res) {
 router.post('/delete/joueurs', function (req, res) {
     req.getConnection(function (err, connection) {
         var query = connection.query(`
-                    DELETE FROM joueurs
+                    DELETE FROM joueur
                     `, function (err, rows) {
                 if (err) {
                     res.setHeader('Access-Control-Allow-Origin', '*');
