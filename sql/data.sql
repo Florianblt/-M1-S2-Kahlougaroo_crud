@@ -5,7 +5,8 @@ INSERT INTO role VALUES
 (4, 'Voyante'),
 (5, 'Chasseur'),
 (6, 'Petite Fille'),
-(7, 'Sorcière');
+(7, 'Sorcière'),
+(0, 'Maître du Jeu');
 
 INSERT INTO statut VALUES
 (1,'Salon'),
