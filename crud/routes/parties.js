@@ -78,14 +78,28 @@ router.get('/byToken/:token_joueur', function (req, res) {
                 res.end();
             }
             else {
-                res.setHeader('Access-Control-Allow-Origin', '*');
-                res.writeHead(200, { "Content-Type": "application/json" });
-                var result = {
-                    success: true,
-                    rows: rows.length,
+                if( rows[0] == "")
+                {
+                    res.setHeader('Access-Control-Allow-Origin', '*');
+                    res.writeHead(204, { "Content-Type": "application/json" });
+                    var result = {
+                        success: true,
+                        rows: rows.length,
+                    }
+                    res.write(JSON.stringify(rows));
+                    res.end();
                 }
-                res.write(JSON.stringify(rows));
-                res.end();
+                else
+                {
+                    res.writeHead(200, { "Content-Type": "application/json" });
+                    var result = {
+                        success: true,
+                        rows: rows.length,
+                    }
+                    res.write(JSON.stringify(rows));
+                    res.end();
+                }
+
             }
         });
     });

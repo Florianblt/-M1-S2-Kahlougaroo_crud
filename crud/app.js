@@ -5,7 +5,6 @@ var mysql = require('mysql');
 var bodyParser = require('body-parser');
 var config = require('./config_prod')
 
-
 var connection  = require('express-myconnection'); 
 app.use(
     connection(mysql,{

@@ -8,7 +8,6 @@ router.get('/', function (req, res) {
     req.getConnection(function (err, connection) {
         var query = connection.query('SELECT * FROM role', function (err, rows) {
             if (err) {
-                // throw err;
                 res.setHeader('Access-Control-Allow-Origin', '*');
                 res.writeHead(500, { "Content-Type": "application/json" });
                 var result = {
@@ -28,7 +27,6 @@ router.get('/', function (req, res) {
                 res.end();
             }
         });
-        // connection.release();
     });
 });
 
