@@ -47,8 +47,14 @@ router.get('/:pin', function (req, res) {
                 res.end();
             }
             else {
+                var code = 200;
+                if(rows[0] == null)
+                {
+                    console.log("vide");
+                    code = 204;
+                }
                 res.setHeader('Access-Control-Allow-Origin', '*');
-                res.writeHead(200, { "Content-Type": "application/json" });
+                res.writeHead(code, { "Content-Type": "application/json" });
                 var result = {
                     success: true,
                     rows: rows.length,
