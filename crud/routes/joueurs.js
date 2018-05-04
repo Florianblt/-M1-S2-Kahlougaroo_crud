@@ -40,7 +40,8 @@ router.get('/:partie/:pseudo', function (req, res) {
             SELECT joueur.token 
             FROM joueur 
             INNER JOIN partie ON joueur.partie = partie.token
-            WHERE joueur.pseudo = "${req.params.pseudo}" AND partie.pin = ${req.params.partie}
+            WHERE joueur.nom = "${req.params.pseudo}"
+            AND partie.pin = ${req.params.partie}
             `, function (err, rows) {
             if (err) {
                 res.setHeader('Access-Control-Allow-Origin', '*');
